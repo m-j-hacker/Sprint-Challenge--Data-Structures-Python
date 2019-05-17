@@ -16,7 +16,8 @@ class RingBuffer:
       self.current = (self.current + 1) % self.capacity
     def get(self):
       # The list should be returned in the right order, from oldest to newest
-      return self.storage[self.current:]+self.storage[:self.current]
+      return self.storage
+      
 
   def append(self, item):
     
@@ -27,7 +28,7 @@ class RingBuffer:
       self.current = 0
       self.__class__ = self.__Full
     else:
-      self.current += 1
+      self.current = (self.current + 1) % self.capacity
 
   def get(self):
     array = []
